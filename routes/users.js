@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/users/register', csrfProtection, asyncHandler(async(req, res, next) => {
+router.get('/register', csrfProtection, asyncHandler(async(req, res, next) => {
   const newUser = db.User.build()
   res.render('user-register', {
     title: 'Register',
@@ -69,7 +69,7 @@ const userValidators = [
     })
 ]
 
-router.post('/users/register', csrfProtection, userValidators, asyncHandler(async(req, res, next) => {
+router.post('/register', csrfProtection, userValidators, asyncHandler(async(req, res, next) => {
   const {
     userName,
     email,
