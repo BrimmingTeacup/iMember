@@ -99,8 +99,7 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async (req
     const hashedPassword = await bcrypt.hash(password, 8)
     newUser.hashed_password = hashedPassword
     await newUser.save()
-
-    res.redirect('/')
+    res.redirect(`/users/${newUser.id}/home`)
   }
   else {
     const errors = validatorErrors.array().map((error) => error.msg)
@@ -113,6 +112,15 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async (req
   }
 
 }))
+
+router.get(`/:id/home`, csrfProtection, asyncHandler(async(req,res) => {
+  const id = req.params.id
+  res.render('user-home', {
+    title: 'Home',
+    csrfToken: req.csrfToken()
+  })
+}))
+
 
 router.get('/login', csrfProtection, asyncHandler(async (req, res, next) => {
   res.render('user-login', {
