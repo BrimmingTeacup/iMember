@@ -36,6 +36,8 @@ router.post('/new', taskValidators, asyncHandler(async (req, res, next) => {
 
   const newTask = db.Task.build({
     content,
+    list_Id,
+    user_Id,
     dueDate,
     startDate,
     priority,
