@@ -35,30 +35,36 @@ const listValidators = [
 ]
 
 router.post('/new', csrfProtection, listValidators, asyncHandler(async(req, res, next) => {
-  const id = req.params.id
+  if(req.session.auth){
+    const { userId } = req.session.auth
 
+    const {
+      name
+    } = req.body
 
-
-  const { name } = req.body
-
-  const newList = db.List.build({ id, name })
-
-  const validatorErrors = validationResult(req)
-
-  if(validatorErrors.isEmpty()){
-    await newList.save()
-
-    res.redirect('/users/:id/home')
-  }
-  else {
-    const errors = validatorErrors.array().map((error) => error.msg)
-    res.render('list-new', {
-      title: 'Create List',
-      newList,
-      errors,
-      csrfToken: req.csrfToken()
+    const newList = db.List.build({
+      name,
+      user_Id: userId
     })
+
+    const validatorErrors = validationResult(req)
+
+    if(validatorErrors.isEmpty()){
+      await newList.save()
+
+      res.redirect(`/users/${userId}/home`)
+    }
+    else {
+      const errors = validatorErrors.array().map((error) => error.msg)
+      res.render('list-new', {
+        title: 'Create List',
+        newList,
+        errors,
+        csrfToken: req.csrfToken()
+      })
+    }
   }
+
 
 }))
 

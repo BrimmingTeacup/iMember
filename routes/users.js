@@ -139,14 +139,14 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
   const validatorErrors = validationResult(req)
 
   if (validatorErrors.isEmpty()) {
-    const userEmail = await db.User.findOne({ where: { email } })
+    const user = await db.User.findOne({ where: { email } })
 
-    if(userEmail !== null) {
-      const confirmPassword = await bcrypt.compare(password, userEmail.hashed_password.toString())
+    if(user !== null) {
+      const confirmPassword = await bcrypt.compare(password, user.hashed_password.toString())
 
       if(confirmPassword) {
-        loginUser(req, res, userEmail)
-        return res.redirect(`/users/${req.params.id}/home`);
+        loginUser(req, res, user)
+        return res.redirect(`/users/${user.id}/home`);
       }
     }
     errors.push('Login failed for the provided email address and password.')
