@@ -22,37 +22,40 @@ const taskValidators = [
     .withMessage("Please provide a task.")
     .isLength({ max: 255 })
     .withMessage("Must not exceed 255 characters")
+
 ]
 
 router.post('/new', taskValidators, asyncHandler(async (req, res, next) => {
-  const {
-    content,
-    dueDate,
-    startDate,
-    priority,
-    repeat,
-    location
-  } = req.body
+  if (req.session.auth) {
+    const { listId, userId } = req.session.auth
 
-  const newTask = db.Task.build({
-    content,
-    list_Id,
-    user_Id,
-    dueDate,
-    startDate,
-    priority,
-    repeat,
-    location
-  })
+    const {
+      content,
+      dueDate,
+      startDate,
+      priority,
+      repeat,
+      location
+    } = req.body
 
-  const validatorErrors = validationResult(req)
+    const newTask = db.Task.build({
+      content,
+      list_Id: listId,
+      user_Id: userId,
+      dueDate,
+      startDate,
+      priority,
+      repeat,
+      location
+    })
 
-  if (validatorErrors.isEmpty()) {
-    await newTask.save();
-    res.redirect('/')
-  }
-  else {
-    console.log('failed!!!!!!!!')
+    const validatorErrors = validationResult(req)
+
+    if (validatorErrors.isEmpty()) {
+      await newTask.save();
+      res.redirect(`/users/${userId}/home`)
+    }
+
   }
 
 }))
