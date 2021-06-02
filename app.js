@@ -11,7 +11,7 @@ const { sequelize } = require('./db/models')
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 
-const { csrfProtection, asyncHandler } = require('./utils')
+const { csrfProtection, asyncHandler } = require('./routes/utils')
 
 const app = express();
 
