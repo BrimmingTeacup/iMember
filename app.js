@@ -14,7 +14,11 @@ const { restoreUser } = require('./auth');
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+
+const tasksRouter = require('./routes/tasks')
+
 const listsRouter = require('./routes/lists-new.js')
+
 
 const { csrfProtection, asyncHandler } = require('./routes/utils')
 
@@ -53,7 +57,11 @@ store.sync();
 app.use(restoreUser)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.use('/tasks', tasksRouter);
+
 app.use('/lists', listsRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
