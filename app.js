@@ -6,11 +6,19 @@ const logger = require('morgan');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+const { sessionSecret } = require('./config')
+
 const { sequelize } = require('./db/models')
+
+const { restoreUser } = require('./auth');
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+
 const tasksRouter = require('./routes/tasks')
+
+const listsRouter = require('./routes/lists-new.js')
+
 
 const { csrfProtection, asyncHandler } = require('./routes/utils')
 
@@ -23,6 +31,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  name: 'imember.sid',
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: false,
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set up session middleware
@@ -40,9 +54,13 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+app.use(restoreUser)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 app.use('/tasks', tasksRouter);
+
+app.use('/lists', listsRouter)
 
 
 // catch 404 and forward to error handler

@@ -5,3 +5,11 @@ mixin field(labelText, fieldName, fieldValue, fieldType='text', placeholder=null
     //-   textarea(id=fieldName name=fieldName class='formControl' rows='5')= fieldValue
     //- else
     input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='formControl')
+
+mixin validationErrorSummary(errors)
+  if errors
+    div(class='alert alert-danger' role='alert')
+      p The following error(s) occurred:
+      ul
+        each error in errors
+          li= error
