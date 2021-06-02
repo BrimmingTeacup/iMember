@@ -3,11 +3,12 @@ extends layout
 include utils.pug
 
 block content
+  +validationErrorSummary(errors)
   body
     form(action="/users/register" method="post")
-      input(type="hidden", name="csrfToken" value=csrfToken)
-      +field('Username', 'userName', userName)
-      +field('Email', 'email', email, 'email')
+      input(type="hidden", name="_csrf" value=csrfToken)
+      +field('Username', 'userName', newUser.userName)
+      +field('Email', 'email', newUser.email, 'email')
       +field('Password', 'password', '', 'password')
       +field('Confirm Password', 'confirmPassword', '', 'password')
       button(type="submit") Submit

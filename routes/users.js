@@ -88,8 +88,9 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
 
   if(validatorErrors.isEmpty()){
     const hashedPassword = await bcrypt.hash(password, 8)
-    newUser.hashedPassword = hashedPassword
+    newUser.hashed_password = hashedPassword
     await newUser.save()
+
     res.redirect('/')
   }
   else {
@@ -103,7 +104,6 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
   }
 
 }))
-
 
 
 module.exports = router;
