@@ -1,4 +1,4 @@
-const { strictRight } = require("sequelize/types/lib/operators")
+// const { strictRight } = require("sequelize/types/lib/operators")
 const db = require("./db/models")
 
 const loginUser = (req, res, user) => {
