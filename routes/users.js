@@ -146,7 +146,7 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
 
       if(confirmPassword) {
         loginUser(req, res, userEmail)
-        return res.redirect('/');
+        return res.redirect(`/users/${req.params.id}/home`);
       }
     }
     errors.push('Login failed for the provided email address and password.')
