@@ -3,17 +3,17 @@ const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 
 const db = require('../db/models')
-
+const { loginUser } = require('../auth.js')
 const { csrfProtection, asyncHandler } = require('./utils')
 
 var router = express.Router()
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/register', csrfProtection, asyncHandler(async(req, res, next) => {
+router.get('/register', csrfProtection, asyncHandler(async (req, res, next) => {
   const newUser = db.User.build()
   res.render('user-register', {
     title: 'Register',
@@ -21,6 +21,15 @@ router.get('/register', csrfProtection, asyncHandler(async(req, res, next) => {
     csrfToken: req.csrfToken()
   })
 }))
+
+const loginValidators = [
+  check('email')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter an email address'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a password.')
+]
 
 const userValidators = [
   check("userName")
@@ -35,7 +44,7 @@ const userValidators = [
             return Promise.reject('The provided Username is already in use by another account')
           }
         })
-      }),
+    }),
   check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide an Email Address")
@@ -50,7 +59,7 @@ const userValidators = [
             return Promise.reject('The provided Email Address is already in use by another account')
           }
         })
-      }),
+    }),
   check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a Password")
@@ -62,14 +71,14 @@ const userValidators = [
     .exists({ checkFalsy: true })
     .withMessage("Must match Password")
     .custom((value, { req }) => {
-      if ( value !== req.body.password) {
-          throw new Error('Confirm Password does not match Password')
+      if (value !== req.body.password) {
+        throw new Error('Confirm Password does not match Password')
       }
       return true
     })
 ]
 
-router.post('/register', csrfProtection, userValidators, asyncHandler(async(req, res, next) => {
+router.post('/register', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
   const {
     userName,
     email,
@@ -86,7 +95,7 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
 
   const validatorErrors = validationResult(req)
 
-  if(validatorErrors.isEmpty()){
+  if (validatorErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 8)
     newUser.hashed_password = hashedPassword
     await newUser.save()
@@ -105,5 +114,43 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
 
 }))
 
+router.get('/login', csrfProtection, asyncHandler(async (req, res, next) => {
+  res.render('user-login', {
+    title: 'User Login',
+    csrfToken: req.csrfToken()
+  })
+}))
+
+router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, res, next) => {
+  const {
+    email,
+    password,
+  } = req.body
+
+  let errors = [];
+  const validatorErrors = validationResult(req)
+
+  if (validatorErrors.isEmpty()) {
+    const userEmail = await db.User.findOne({ where: { email } })
+
+    if(userEmail !== null) {
+      const confirmPassword = await bcrypt.compare(password, userEmail.hashed_password.toString())
+
+      if(confirmPassword) {
+        loginUser(req, res, userEmail)
+        return res.redirect('/');
+      }
+    }
+    errors.push('Login failed for the provided email address and password.')
+  } else {
+    errors = validatorErrors.array().map((error) => error.msg)
+  }
+  res.render('user-login', {
+    title: 'Login',
+    email,
+    errors,
+    csrfToken: req.csrfToken()
+  })
+}))
 
 module.exports = router;
