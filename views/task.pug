@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  body
+    form(action="/tasks/new" method="post")
+      div
+        label(for="content") Task
+        input(type="text", name="content")
+      div
+        label(for="startDate") Start Date
+        input(type="date")
+        input(type="time")
+      div
+        label(for="dueDate") Due Date
+        input(type="date")
+        input(type="time")
+      div
+        label(for="priority") Is Priority
+        input(type="checkbox")
+      div
+        label(for="repeat") Repeat
+        input(type="checkbox")
+        input(type="date")
+      div
+        label(for="location") Location
+        input(type="text")
+      div
+        button(type="submit") Create Task
