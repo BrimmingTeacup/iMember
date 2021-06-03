@@ -5,9 +5,11 @@ const db = require('../db/models')
 
 const { csrfProtection, asyncHandler } = require('./utils')
 
+const { requireAuth } = require('../auth')
+
 const router = express.Router()
 
-router.get('/new', csrfProtection, asyncHandler(async(req, res, next) => {
+router.get('/new', requireAuth, csrfProtection, asyncHandler(async(req, res, next) => {
   const id = req.params.id
 
   const newList = db.List.build()
@@ -34,7 +36,7 @@ const listValidators = [
     })
 ]
 
-router.post('/new', csrfProtection, listValidators, asyncHandler(async(req, res, next) => {
+router.post('/new', requireAuth, csrfProtection, listValidators, asyncHandler(async(req, res, next) => {
   if(req.session.auth){
     const { userId } = req.session.auth
 
