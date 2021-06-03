@@ -9,7 +9,7 @@ module.exports = {
       Example:
       */
      return queryInterface.bulkInsert('Users', [
-       {userName: 'TestUser', email: 'test@email.com', hashed_password: bcrypt.hashSync('password'),}
+       {userName: 'TestUser', email: 'test@email.com', hashed_password: bcrypt.hashSync('password'), createdAt: new Date(), updatedAt: new Date()}
      ], {});
   },
 
