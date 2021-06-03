@@ -46,8 +46,6 @@ router.post('/new', requireAuth, taskValidators, asyncHandler(async (req, res, n
       user_Id: userId,
       dueDate,
       startDate,
-      // priority,
-      // repeat,
       priority: priority === "on",
       repeat: repeat === "on",
       location
@@ -62,6 +60,37 @@ router.post('/new', requireAuth, taskValidators, asyncHandler(async (req, res, n
 
   }
 
+}))
+
+
+
+
+
+// edit list
+router.put('/:id(\\d+)', taskValidators, asyncHandler(async (req, res, next) => {
+  const id = parseInt(req.params.id, 10);
+  const task = await db.Task.findByPk(id);
+  if (task) {
+    const { content } = req.body; //listid?
+    await task.update({ content,  });
+    res.json({ task })
+  } else {
+    next(taskValidators(id));
+  }
+
+}))
+
+
+// delete list
+router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const id = parseInt(req.params.id, 10);
+  const task = await db.Task.findByPk(id);
+  if (task) {
+    await task.destroy();
+    res.status(204).end();
+  } else {
+    next(taskValidators(id));
+  }
 }))
 
 
