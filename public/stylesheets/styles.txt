@@ -1,0 +1,6 @@
+COLOR SCHEME
+1. Memberberry Purple  #A48ABF
+2. Lavender            #D7C7E1      SIDEBAR BACKGROUND
+3. Purplish White      #F0E9F2      BACKGROUND
+4. Medium Grey         #B0B3B7      NABVAR ICONS
+5. Dark Purple         #443A7B      NAVBAR

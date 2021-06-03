@@ -7,6 +7,12 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1 iMember
-  a(href='http://localhost:8080/users/register') Register
-  a(href='http://localhost:8080/users/login') Login
+  h1 iMac
+  img(src='Member-berries.png' class="berries")
+  ul
+    li
+      a(href='http://localhost:8080/users/register' class='logAndReg' id='logBtn')
+        button(name='Register') Register
+    li
+      a(href='http://localhost:8080/users/login' class='logAndReg' id='regBtn')
+        button(name='Login') Login

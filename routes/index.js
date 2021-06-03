@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get(`/home`, csrfProtection, asyncHandler(async(req,res) => {
   const id = req.params.id
+  // console.log('IS USER HERE?? -------', req.session)
   res.render('user-home', {
     title: 'Home',
     csrfToken: req.csrfToken()

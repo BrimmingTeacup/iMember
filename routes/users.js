@@ -155,9 +155,9 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
 }))
 
 router.get('/logout', asyncHandler(async(req,res,next) => {
-  console.log(req.session)
+  console.log('BEFORE LOGOUT ------ ', req.session)
   logoutUser(req,res,next);
-  console.log(req.session)
+  console.log('aFTER LOGOUT ------ ', req.session)
   res.redirect('/')
 }))
 
