@@ -4,12 +4,12 @@ var router = express.Router()
 const { csrfProtection, asyncHandler } = require('./utils')
 const db = require('../db/models')
 
-
+const { requireAuth } = require('../auth')
 router.get('/', function (req, res, next) {
   res.send('we are in tasks')
 })
 
-router.get('/new', asyncHandler(async (req, res, next) => {
+router.get('/new', requireAuth, asyncHandler(async (req, res, next) => {
   const newTask = db.Task.build()
   res.render('task', {
     title: 'Tasks'
@@ -25,7 +25,7 @@ const taskValidators = [
 
 ]
 
-router.post('/new', taskValidators, asyncHandler(async (req, res, next) => {
+router.post('/new', requireAuth, taskValidators, asyncHandler(async (req, res, next) => {
   if (req.session.auth) {
     const { listId, userId } = req.session.auth
 
