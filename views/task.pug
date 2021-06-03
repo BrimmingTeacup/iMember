@@ -8,21 +8,22 @@ block content
         input(type="text", name="content")
       div
         label(for="startDate") Start Date
-        input(type="date")
-        input(type="time")
+        input(type="date" name="startDate")
+        input(type="time" name="startDate")
       div
         label(for="dueDate") Due Date
-        input(type="date")
-        input(type="time")
+        input(type="date" name="dueDate")
+        input(type="time" name="dueDate")
       div
         label(for="priority") Is Priority
-        input(type="checkbox")
+        //- - var checked = true;
+        input(type="checkbox" name="priority" checked=false)
       div
         label(for="repeat") Repeat
-        input(type="checkbox")
-        input(type="date")
+        input(type="checkbox" name="repeat" checked=false)
+        input(type="date" name="repeat")
       div
         label(for="location") Location
-        input(type="text")
+        input(type="text" name="location")
       div
         button(type="submit") Create Task
