@@ -1,3 +1,44 @@
+* {
+    background-color: #D7C7E1;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+}
+
 h1 {
-    color: #555555;
+    /* display: flex; */
+    color: #443A7B;
+    padding: 10px;
+    font-family: 'SF Pro Text',-apple-system,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+    /* position:absolute; */
+}
+
+.berries {
+    /* display: flex; */
+    margin: 10px;
+    height: 513px;
+    width: 311px;
+}
+
+li {
+    display: inline-block;
+}
+
+.logAndReg {
+    padding: 10px;
+}
+
+button {
+    border-radius: 10px;
+    color: #F0E9F2;
+    background-color: #443A7B;
+}
+
+button:hover {
+    box-shadow: black 5px;
 }
