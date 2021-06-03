@@ -99,7 +99,8 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async (req
     const hashedPassword = await bcrypt.hash(password, 8)
     newUser.hashed_password = hashedPassword
     await newUser.save()
-    res.redirect(`/users/${newUser.id}/home`)
+    loginUser(req, res, newUser)
+    res.redirect(`/home`)
   }
   else {
     const errors = validatorErrors.array().map((error) => error.msg)
@@ -111,14 +112,6 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async (req
     })
   }
 
-}))
-
-router.get(`/:id/home`, csrfProtection, asyncHandler(async(req,res) => {
-  const id = req.params.id
-  res.render('user-home', {
-    title: 'Home',
-    csrfToken: req.csrfToken()
-  })
 }))
 
 
@@ -146,7 +139,7 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
 
       if(confirmPassword) {
         loginUser(req, res, user)
-        return res.redirect(`/users/${user.id}/home`);
+        return res.redirect(`/home`);
       }
     }
     errors.push('Login failed for the provided email address and password.')

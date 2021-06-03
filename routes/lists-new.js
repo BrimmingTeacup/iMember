@@ -52,7 +52,7 @@ router.post('/new', csrfProtection, listValidators, asyncHandler(async(req, res,
     if(validatorErrors.isEmpty()){
       await newList.save()
 
-      res.redirect(`/users/${userId}/home`)
+      res.redirect(`/home`)
     }
     else {
       const errors = validatorErrors.array().map((error) => error.msg)

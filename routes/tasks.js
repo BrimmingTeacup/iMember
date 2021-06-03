@@ -53,7 +53,7 @@ router.post('/new', taskValidators, asyncHandler(async (req, res, next) => {
 
     if (validatorErrors.isEmpty()) {
       await newTask.save();
-      res.redirect(`/users/${userId}/home`)
+      res.redirect(`/home`)
     }
 
   }
