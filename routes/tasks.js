@@ -21,7 +21,7 @@ const taskValidators = [
     .exists({ checkFalsy: true })
     .withMessage("Please provide a task.")
     .isLength({ max: 255 })
-    .withMessage("Must not exceed 255 characters")
+    .withMessage("Must not exceed 255 characters"),
 
 ]
 
@@ -38,14 +38,18 @@ router.post('/new', taskValidators, asyncHandler(async (req, res, next) => {
       location
     } = req.body
 
+    console.log('this is priority', priority)
+
     const newTask = db.Task.build({
       content,
-      list_Id: listId,
+      list_Id: 1,
       user_Id: userId,
       dueDate,
       startDate,
-      priority,
-      repeat,
+      // priority,
+      // repeat,
+      priority: priority === "on",
+      repeat: repeat === "on",
       location
     })
 
