@@ -3,12 +3,12 @@ extends layout
 include utils.pug
 
 block content
+  a(href='http://localhost:8080/home') Home
   +validationErrorSummary(errors)
   body
     form(action="/lists/new" method="post")
       input(type="hidden", name="_csrf" value=csrfToken)
       +field('Name', 'name', newList.name)
       button(type="submit") Create List
-
-
-    a(href='http://localhost:8080/home') Home
+      button(type="submit") Edit
+      button(type="submit") Delete

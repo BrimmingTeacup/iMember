@@ -7,7 +7,7 @@ const { csrfProtection, asyncHandler } = require('./utils')
 
 const router = express.Router()
 
-router.get('/new', csrfProtection, asyncHandler(async(req, res, next) => {
+router.get('/new', csrfProtection, asyncHandler(async (req, res, next) => {
   const id = req.params.id
 
   const newList = db.List.build()
@@ -34,8 +34,8 @@ const listValidators = [
     })
 ]
 
-router.post('/new', csrfProtection, listValidators, asyncHandler(async(req, res, next) => {
-  if(req.session.auth){
+router.post('/new', csrfProtection, listValidators, asyncHandler(async (req, res, next) => {
+  if (req.session.auth) {
     const { userId } = req.session.auth
 
     const {
@@ -49,7 +49,7 @@ router.post('/new', csrfProtection, listValidators, asyncHandler(async(req, res,
 
     const validatorErrors = validationResult(req)
 
-    if(validatorErrors.isEmpty()){
+    if (validatorErrors.isEmpty()) {
       await newList.save()
 
       res.redirect(`/home`)
@@ -66,6 +66,33 @@ router.post('/new', csrfProtection, listValidators, asyncHandler(async(req, res,
   }
 
 
+}))
+
+// edit list
+router.put('/:id(\\d+)', listValidators, asyncHandler(async (req, res, next) => {
+  const id = parseInt(req.params.id, 10);
+  const list = await db.List.findByPk(id);
+  if (list) {
+    const { name } = req.body;
+    await list.update({ name });
+    res.json({ list })
+  } else {
+    next(listValidators(id));
+  }
+
+}))
+
+
+// delete list
+router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const list = await db.List.findByPk(id);
+  if (list) {
+    await list.destroy();
+    res.status(204).end();
+  } else {
+    next(listValidators(id));
+  }
 }))
 
 module.exports = router;
