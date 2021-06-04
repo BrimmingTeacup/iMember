@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-    color: #443A7B;
+
     padding: 10px;
     font-family: 'SF Pro Text',-apple-system,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
 }
@@ -61,6 +61,7 @@ button:hover {
     margin: 172px -20px 0 0px;
 }
 
+
 #right-words,
 #left-words {
     position: absolute;
@@ -77,3 +78,4 @@ button:hover {
     margin-top: 240px;
     margin-left: 25px;
 }
+
