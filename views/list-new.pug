@@ -3,7 +3,7 @@ extends layout
 include utils.pug
 
 block content
-  a(href='http://localhost:8080/home') Home
+  a(href='http://list-imember.herokuapp.com/home') Home
   +validationErrorSummary(errors)
   body
     form(action="/lists/new" method="post")
