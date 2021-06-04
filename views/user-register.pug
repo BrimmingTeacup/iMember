@@ -2,9 +2,12 @@ extends layout
 
 include utils.pug
 
+append head
+  link(rel="stylesheet" href="/stylesheets/register.css")
+
 block content
-  +validationErrorSummary(errors)
   body
+    +validationErrorSummary(errors)
     form(action="/users/register" method="post")
       input(type="hidden", name="_csrf" value=csrfToken)
       +field('Username', 'userName', newUser.userName)
