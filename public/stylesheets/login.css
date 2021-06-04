@@ -5,9 +5,9 @@
 body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items:center;
-    flex-direction: column;
     background-image: url('../Member-berries3.png');
     background-repeat: no-repeat;
     background-size: 80vh;
@@ -19,12 +19,14 @@ input {
     background-color: white;
 }
 
-.loginForm {
+.formGroup {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-    background-color: transparent;
+}
+
+form {
+    margin: 10px;
 }
 
 a {
@@ -41,4 +43,16 @@ button {
 
 button:hover {
     box-shadow: 2px 2px 2px rgb(0, 0, 0, .5);
+}
+
+.alert-danger {
+    border: 2px solid #443A7B;
+    padding: 50px;
+    margin: 15px;
+}
+
+p {
+    text-align: center;
+    margin-block-start: 0;
+    margin-block-end: .5em;
 }
