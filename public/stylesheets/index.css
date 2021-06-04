@@ -60,3 +60,22 @@ button:hover {
 .thought-right {
     margin: 172px -20px 0 0px;
 }
+
+
+#right-words,
+#left-words {
+    position: absolute;
+    width: 140px;
+    text-align: center;
+}
+
+#left-words {
+    margin-left: -35px;
+    margin-top: 20px;
+}
+
+#right-words {
+    margin-top: 240px;
+    margin-left: 25px;
+}
+
