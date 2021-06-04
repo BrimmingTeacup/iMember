@@ -2,9 +2,22 @@ extends layout
 
 include utils.pug
 
+append head
+  link(rel="stylesheet" href="/stylesheets/user-home.css")
+  script(src="/javascripts/user-home.js" type="module" defer)
+
 block content
+  .header-div
+    img(src="berry-single.png", class= "berry-single")
+    h1(class="iMember-h1") iMember
+    a(href='http://list-imember.herokuapp.com:8080/users/logout' class="logout-container")
+      button(name="New List" class="button logout-button") Logout
   h1 Welcome to the User Home
-  h3 Tasks
-  a(href='http://list-imember.herokuapp.com:8080/lists/new') New List
-  a(href='http://list-imember.herokuapp.com:8080/tasks/new') New Task
-  a(href='http://list-imember.herokuapp.com:8080/users/logout') Logout
+  ul
+    li
+      a(href='http://list-imember.herokuapp.com:8080/lists/new')
+        button(name="New List" class="button") New List
+    li
+      a(href='http://list-imember.herokuapp.com:8080/tasks/new')
+        button(name="New List" class="button") New Task
+  thead Tasks
