@@ -11,15 +11,12 @@ body {
 }
 
 h1 {
-    /* display: flex; */
     color: #443A7B;
     padding: 10px;
     font-family: 'SF Pro Text',-apple-system,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-    /* position:absolute; */
 }
 
 .berries {
-    /* display: flex; */
     margin: 10px;
     height: 513px;
     width: 311px;
@@ -29,16 +26,39 @@ li {
     display: inline-block;
 }
 
-.logAndReg {
-    padding: 10px;
+ul {
+    padding-right: 20px;
 }
 
 button {
     border-radius: 10px;
     color: #F0E9F2;
     background-color: #443A7B;
+    padding: 5px;
+    margin: 2px 15px 2px 10px;
 }
 
 button:hover {
-    box-shadow: black 5px;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0, .5);
 }
+
+.berriesAndThoughts {
+    display: inline-flex;
+}
+
+.thought-right,
+.thought-left {
+    width: 200px;
+    height: 170px;
+    left: 100px;
+}
+
+.thought-left {
+    margin: -40px 0 0 -70px;
+}
+
+.thought-right {
+    margin: 172px -20px 0 0px;
+}
+
+

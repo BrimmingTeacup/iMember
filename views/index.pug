@@ -7,12 +7,15 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1 iMember 
-  img(src='Member-berries.png' class="berries")
+  h1 iMember
+  div.berriesAndThoughts
+    img(src='thought-bubble-right.png' class="thought-right")
+    img(src='Member-berries.png' class="berries")
+    img(src='thought-bubble-left.png' class="thought-left")
   ul
     li
-      a(href='http://localhost:8080/users/register' class='logAndReg' id='logBtn')
+      a(href='http://localhost:8080/users/register' id='logBtn')
         button(name='Register') Register
     li
-      a(href='http://localhost:8080/users/login' class='logAndReg' id='regBtn')
+      a(href='http://localhost:8080/users/login' id='regBtn')
         button(name='Login') Login
