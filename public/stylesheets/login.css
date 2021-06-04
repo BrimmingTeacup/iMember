@@ -11,11 +11,12 @@ body {
     background-image: url('../Member-berries3.png');
     background-repeat: no-repeat;
     background-size: 80vh;
-    background-position: -390px -60px;
+    background-position: -30% -60px;
 }
 
 input {
     margin: 5px;
+    background-color: white;
 }
 
 .loginForm {
