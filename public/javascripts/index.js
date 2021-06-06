@@ -1,7 +1,5 @@
 window.addEventListener("load", (event)=>{
 
-    console.log("hello from javascript!")
-
     const memberArray = ['AT-ATs', 'Ghostbusters', 'Slimer', 'Spock', 'tricorders',
     'Bionic Man', 'the millennium Falcon', 'TIE Fighters', 'Jawas',
     'Jurassic Park', 'Jeff Goldblum', 'Star Destroyers', 'Tattooine',
@@ -25,9 +23,6 @@ window.addEventListener("load", (event)=>{
     let thoughtRightVar = memberFunction();
     let thoughtLeftVar = memberFunction()
 
-    console.log('Right ----- ', thoughtRightVar)
-    console.log('Left ----- ', thoughtLeftVar)
-
     while (thoughtRightVar === thoughtLeftVar) {
         thoughtLeftVar = memberFunction()
     }
@@ -35,7 +30,10 @@ window.addEventListener("load", (event)=>{
     thoughtRight.innerHTML = thoughtRightVar
     thoughtLeft.innerHTML = thoughtLeftVar
 
-    console.log('Right ----- ', thoughtRightVar)
-    console.log('Left ----- ', thoughtLeftVar)
+    document.querySelectorAll('.logout-button')[0].setAttribute('hidden', 'true')
+    //make dynamic
+
+
+
 
 })
