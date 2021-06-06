@@ -1,34 +1,35 @@
 extends layout
 
+append head
+  link(rel="stylesheet" href="/stylesheets/task-new.css")
+
 block content
   body
+    a(href='http://list-imember.herokuapp.com/home') Home
     form(action="/tasks/new" method="post")
-      div
+      div.formGroup
         label(for="content") Task
         input(type="text", name="content")
-      div
+      div.formGroup
         label(for="startDate") Start Date
         input(type="date" name="startDate")
         input(type="time" name="startDate")
-      div
+      div.formGroup
         label(for="dueDate") Due Date
         input(type="date" name="dueDate")
         input(type="time" name="dueDate")
-      div
+      div.formGroup
         label(for="priority") Is Priority
         //- - var checked = true;
         input(type="checkbox" name="priority" checked=false)
-      div
+      div.formGroup
         label(for="repeat") Repeat
         input(type="checkbox" name="repeat" checked=false)
         input(type="date" name="repeat")
-      div
+      div.formGroup
         label(for="location") Location
         input(type="text" name="location")
-      div
+      div.buttonGroup
         button(type="submit") Create
         button(type="submit") Edit
         button(type="submit") Delete
-
-
-      a(href='http://list-imember.herokuapp.com/home') Home

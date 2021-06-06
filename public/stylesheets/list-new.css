@@ -8,10 +8,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    background-image: url('../Member-berries3.png');
-    background-repeat: no-repeat;
-    background-size: 80vh;
-    background-position: 135% -70px;
 }
 
 input {
@@ -26,8 +22,9 @@ input {
 }
 
 form {
-    padding: 50px;
-    margin: 10px;
+    border: 2px solid #443A7B;
+    padding: 30px;
+    margin: 15px;
 }
 
 a {
@@ -46,14 +43,13 @@ button:hover {
     box-shadow: 2px 2px 2px rgb(0, 0, 0, .5);
 }
 
-.alert-danger {
-    border: 2px solid #443A7B;
-    padding: 50px;
-    margin: 10px;
+.buttonGroup {
+    display: flex;
+    justify-content: center;
 }
 
-p {
-    text-align: center;
-    margin-block-start: 0;
-    margin-block-end: .5em;
+.alert-danger {
+    border: 2px solid #443A7B;
+    padding: 30px;
+    margin: 15px;
 }
