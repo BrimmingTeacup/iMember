@@ -3,17 +3,19 @@ extends layout
 include utils.pug
 
 append head
-  link(rel="stylesheet" href="/stylesheets/register.css")
+  link(rel='stylesheet' href='/stylesheets/reset.css')
+  link(rel="stylesheet" href="/stylesheets/regAndLogin.css")
 
 block content
   body
-    +validationErrorSummary(errors)
-    form(action="/users/register" method="post")
-      input(type="hidden", name="_csrf" value=csrfToken)
-      +field('Username', 'userName', newUser.userName)
-      +field('Email', 'email', newUser.email, 'email')
-      +field('Password', 'password', '', 'password')
-      +field('Confirm Password', 'confirmPassword', '', 'password')
-      button(type="submit") Submit
-      a(href='/users/login') Already have an account?
-      a(href='/') Cancel
+    .main
+      +validationErrorSummary(errors)
+      form(action="/users/register" method="post")
+        input(type="hidden", name="_csrf" value=csrfToken)
+        +field('Username', 'userName', newUser.userName)
+        +field('Email', 'email', newUser.email, 'email')
+        +field('Password', 'password', '', 'password')
+        +field('Confirm Password', 'confirmPassword', '', 'password')
+        button(type="submit") Submit
+        a(href='/users/login') Already have an account?
+        a(href='/') Cancel

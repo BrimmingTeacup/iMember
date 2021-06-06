@@ -3,16 +3,18 @@ extends layout.pug
 include utils.pug
 
 append head
-  link(rel="stylesheet" href="/stylesheets/login.css")
+  link(rel='stylesheet' href='/stylesheets/reset.css')
+  link(rel="stylesheet" href="/stylesheets/regAndLogin.css")
 
 block content
   body
-    +validationErrorSummary(errors)
-    form(action='/users/login' method='post' class="loginForm")
-      input(type='hidden' name='_csrf' value=csrfToken)
-      +field('Email Address', 'email', email)
-      +field('Password', 'password', null, 'password')
-      div(class='submit-button')
-      button(type='submit') Login
-      a(href='/users/register') Don't have an account?
-      a(href='/') Cancel
+    .main
+      +validationErrorSummary(errors)
+      form(action='/users/login' method='post' class="loginForm")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('Email Address', 'email', email)
+        +field('Password', 'password', null, 'password')
+        div(class='submit-button')
+        button(type='submit') Login
+        a(href='/users/register') Don't have an account?
+        a(href='/') Cancel

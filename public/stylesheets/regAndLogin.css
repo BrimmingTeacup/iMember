@@ -1,13 +1,5 @@
-* {
-    background-color: #D7C7E1;
-}
-
 body {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
     background-image: url('../Member-berries3.png');
     background-repeat: no-repeat;
     background-size: 80vh;
@@ -19,31 +11,13 @@ input {
     background-color: white;
 }
 
-.formGroup {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 form {
     padding: 50px;
     margin: 10px;
 }
 
-a {
-    margin: 5px;
-}
-
 button {
-    border-radius: 10px;
-    color: #F0E9F2;
     background-color: #443A7B;
-    padding: 5px;
-    margin: 2px 15px 2px 10px;
-}
-
-button:hover {
-    box-shadow: 2px 2px 2px rgb(0, 0, 0, .5);
 }
 
 .alert-danger {
@@ -56,4 +30,25 @@ p {
     text-align: center;
     margin-block-start: 0;
     margin-block-end: .5em;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin-top: 10vh;
+}
+
+.formGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    display: flex;
+    align-content: center;
+    text-align: center;
+    margin-right: 10px;
 }
