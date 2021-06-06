@@ -1,14 +1,6 @@
-* {
-    background-color: #D7C7E1;
-}
 
-body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-}
+
+
 
 input {
     margin: 5px;

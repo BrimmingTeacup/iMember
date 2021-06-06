@@ -1,9 +1,5 @@
 body {
     height: 100vh;
-    background-image: url('../Member-berries3.png');
-    background-repeat: no-repeat;
-    background-size: 80vh;
-    background-position: 135% -70px;
 }
 
 input {
