@@ -19,8 +19,8 @@ window.addEventListener("load", (event)=>{
         return `Member ${memberArray[randomNumber]}?`
     };
 
-    const thoughtRight = document.getElementById('right-words')
-    const thoughtLeft = document.getElementById('left-words')
+    const thoughtRight = document.getElementById('words-right')
+    const thoughtLeft = document.getElementById('words-left')
 
     let thoughtRightVar = memberFunction();
     let thoughtLeftVar = memberFunction()

@@ -1,81 +1,18 @@
-* {
-    background-color: #D7C7E1;
-}
-
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    flex-direction: column;
-}
-
-h1 {
-
-    padding: 10px;
-    font-family: 'SF Pro Text',-apple-system,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-}
-
 .berries {
-    margin: 10px;
+    margin: 10vh;
     height: 513px;
     width: 311px;
 }
 
-li {
-    display: inline-block;
-}
-
-ul {
-    padding-right: 20px;
-}
-
-button {
-    border-radius: 10px;
-    color: #F0E9F2;
-    background-color: #443A7B;
-    padding: 5px;
-    margin: 2px 15px 2px 10px;
-}
-
-button:hover {
-    box-shadow: 2px 2px 2px rgb(0, 0, 0, .5);
-}
-
 .berriesAndThoughts {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: row;
 }
 
-.thought-right,
-.thought-left {
+.bubble-left,
+.bubble-right {
     width: 200px;
     height: 170px;
-    left: 100px;
 }
-
-.thought-left {
-    margin: -40px 0 0 -70px;
-}
-
-.thought-right {
-    margin: 172px -20px 0 0px;
-}
-
-
-#right-words,
-#left-words {
-    position: absolute;
-    width: 140px;
-    text-align: center;
-}
-
-#left-words {
-    margin-left: -35px;
-    margin-top: 20px;
-}
-
-#right-words {
-    margin-top: 240px;
-    margin-left: 25px;
-}
-
