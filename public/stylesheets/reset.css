@@ -35,8 +35,9 @@ body {
   color: #A48ABF;
   font-size: 3em;
   position: absolute;
-  width: 100vw;
   height: 80px;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .berry-single {
