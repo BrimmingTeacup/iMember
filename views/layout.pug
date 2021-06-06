@@ -6,7 +6,7 @@ html
         link(rel='stylesheet' href='/stylesheets/reset.css')
   .header-div
     a(href='http://list-imember.herokuapp.com/')
-      img(src="berry-single.png", class= "berry-single")
+      img(src=" ../berry-single.png", class= "berry-single")
     h1(class="iMember-h1") iMember
     div.logButtons
       a(href='http://list-imember.herokuapp.com/users/register' class='logAndReg' id='logBtn')
@@ -14,6 +14,6 @@ html
       a(href='http://list-imember.herokuapp.com/users/login' class='logAndReg' id='regBtn')
         button(name='Login' class='logAndRegButtons') Login
       a(href='http://list-imember.herokuapp.com/users/logout' class="logout-container")
-        button(name="New List" class="button logout-button") Logout
+        button(name="New List" class="logout-button") Logout
   body
     block content

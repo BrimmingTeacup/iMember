@@ -23,7 +23,9 @@ ul {
   padding-right: 20px;
 }
 
-
+button:not(.logout-button) {
+  background-color: #443A7B;
+}
 
 .table-container {
   display: flex;

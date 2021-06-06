@@ -1,3 +1,14 @@
+h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
+body, header, nav {
+  font-size: 1rem;
+  color: inherit;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-weight: normal;
+}
+
 * {
   box-sizing: border-box;
   background-color: #D7C7E1;
@@ -14,21 +25,23 @@ body {
   border-bottom: solid 3px;
   background-color: #443A7B;
   justify-content: space-between;
+  height: 80px;
 }
 
 .iMember-h1 {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  font-family: 'SF Pro Text',-apple-system,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
   color: #A48ABF;
   font-size: 3em;
+  position: absolute;
+  width: 100vw;
+  height: 80px;
 }
 
 .berry-single {
-  height: 10vh;
+  height: 80px;
   padding: 10px;
-  margin: 10px;
   background-color: transparent;
 }
 
@@ -48,15 +61,4 @@ button {
 
 button:hover {
   box-shadow: 2px 2px 2px rgb(0, 0, 0, .5);
-}
-
-h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
-body, header, nav {
-  font-size: 1rem;
-  color: inherit;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  font-weight: normal;
 }
