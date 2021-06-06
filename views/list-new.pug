@@ -3,15 +3,18 @@ extends layout
 include utils.pug
 
 append head
+  link(rel='stylesheet' href='/stylesheets/reset.css')
+  link(rel="stylesheet" href="/stylesheets/forms.css")
   link(rel="stylesheet" href="/stylesheets/list-new.css")
 
 block content
-  a(href='http://list-imember.herokuapp.com/home') Home
-  +validationErrorSummary(errors)
-  body
-    form(action="/lists/new" method="post")
-      input(type="hidden", name="_csrf" value=csrfToken)
-      +field('Name', 'name', newList.name)
-      button(type="submit") Create List
-      button(type="submit") Edit
-      button(type="submit") Delete
+  .main
+    a(href='http://list-imember.herokuapp.com/home') Home
+    +validationErrorSummary(errors)
+    body
+      form(action="/lists/new" method="post")
+        input(type="hidden", name="_csrf" value=csrfToken)
+        +field('Name', 'name', newList.name)
+        button(type="submit") Create List
+        button(type="submit") Edit
+        button(type="submit") Delete
