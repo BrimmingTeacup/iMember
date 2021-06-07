@@ -6,6 +6,14 @@ append head
   link(rel="stylesheet" href="/stylesheets/forms.css")
   link(rel="stylesheet" href="/stylesheets/background-right.css")
 
+  .header-div
+    a(href='http://list-imember.herokuapp.com/')
+      img(src=" ../berry-single.png", class= "berry-single")
+    h1(class="iMember-h1") iMember
+    div.logButtons
+      a(href='http://list-imember.herokuapp.com/users/login' class='logAndReg' id='regBtn')
+        button(name='Login' class='logAndRegButtons') Login
+
 block content
   body
     .main
@@ -19,4 +27,4 @@ block content
         button(type="submit") Submit
         a(href='/users/login') Already have an account?
         a(href='/')
-          button() Cancel
+          button(type="button") Cancel
