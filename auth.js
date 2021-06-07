@@ -10,6 +10,7 @@ const loginUser = (req, res, user) => {
 
 const logoutUser = (req, res) => {
     delete req.session.auth;
+    document.cookie = "imember.sid= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
 };
 
 const requireAuth = (req, res, next) => {
