@@ -5,6 +5,15 @@ include utils.pug
 append head
   link(rel="stylesheet" href="/stylesheets/forms.css")
   link(rel="stylesheet" href="/stylesheets/background-left.css")
+  script(src="/javascripts/demo-login.js" type="module" defer)
+
+  .header-div
+    a(href='http://list-imember.herokuapp.com/')
+      img(src=" ../berry-single.png", class= "berry-single")
+    h1(class="iMember-h1") iMember
+    div.logButtons
+      a(href='http://list-imember.herokuapp.com/users/register' class='logAndReg' id='logBtn')
+        button(name='Register' class='logAndRegButtons') Register
 
 block content
   body
@@ -18,4 +27,5 @@ block content
         button(type='submit') Login
         a(href='/users/register') Don't have an account?
         a(href='/')
-          button() Cancel
+          button(type="button") Cancel
+        button(type="submit" id="demo") Demo User

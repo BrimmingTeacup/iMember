@@ -6,6 +6,14 @@ append head
   link(rel="stylesheet" href="/stylesheets/user-home.css")
   script(src="/javascripts/user-home.js" type="module" defer)
 
+  .header-div
+    a(href='http://list-imember.herokuapp.com/')
+      img(src=" ../berry-single.png", class= "berry-single")
+    h1(class="iMember-h1") iMember
+    div.logButtons
+      a(href='http://list-imember.herokuapp.com/users/logout' class="logout-container")
+        button(name="New List" class="logout-button") Logout
+
 block content
   h1(class="welcome-msg") Welcome to the User Home
   ul(class="button-container")
