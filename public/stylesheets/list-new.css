@@ -10,3 +10,7 @@ form {
 a {
     width: fit-content;
 }
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+}
