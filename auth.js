@@ -10,13 +10,10 @@ const loginUser = (req, res, user) => {
 
 const logoutUser = (req, res) => {
     delete req.session.auth;
-    window.addEventListener("DOMContentLoaded", (e) => {
-        localStorage.setItem('imember.sid', '')
-    })
 };
 
 const requireAuth = (req, res, next) => {
-    if (!res.locals.authenticated) {
+    if(!res.locals.authenticated) {
         return res.redirect('/user/login')
     }
     return next();
