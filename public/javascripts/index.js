@@ -10,7 +10,7 @@ window.addEventListener("load", (event)=>{
     'IG-88, the bounty hunter droid', 'Jaba the Hutt', 'the Battle of Endor',
     'the Ewok village', 'when Han shot Greedo', 'the Tantive IV', 'The Fugitive',
     'Aliens', 'snowspeeders', 'the Invasion of Hoth', '"You Rebel Scum!"',
-    'the Death Star', 'cutting open Tauntauns', 'The Force', 'Stormtroopers']
+    'the Death Star', 'cutting open Tauntauns', 'The Force', 'Stormtroopers', 'giving us a perfect score on the website']
     const memberFunction = () => {
         let randomNumber = Math.floor(Math.random() * memberArray.length);
         console.log(randomNumber)
