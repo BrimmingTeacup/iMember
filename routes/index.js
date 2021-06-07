@@ -10,9 +10,17 @@ router.get('/', function (req, res, next) {
 });
 
 router.get(`/home`, csrfProtection, asyncHandler(async (req, res) => {
-  const id = req.params.id
-  const tasks = await db.Task.findAll({})
-  const lists = await db.List.findOne({})
+  const id = req.session.auth.userId
+  const tasks = await db.Task.findAll({
+    where : {
+      'user_Id' : id
+    }
+  })
+  const lists = await db.List.findAll({
+    where : {
+      'user_Id' : id
+    }
+  })
   // console.log('IS USER HERE?? -------', req.session)
   res.render('user-home', {
     title: 'Home',
