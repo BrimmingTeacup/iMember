@@ -10,8 +10,7 @@ const loginUser = (req, res, user) => {
 
 const logoutUser = (req, res) => {
     delete req.session.auth;
-    let x = document.cookie
-    x = "imember.sid= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+    localStorage.setItem('imember.sid', '')
 };
 
 const requireAuth = (req, res, next) => {
