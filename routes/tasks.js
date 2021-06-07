@@ -81,15 +81,19 @@ router.put('/:id(\\d+)', taskValidators, asyncHandler(async (req, res, next) => 
 }))
 
 
-// delete list
-router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+// delete task
+router.delete('/delete/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const id = parseInt(req.params.id, 10);
+  console.log(req.params.id)
   const task = await db.Task.findByPk(id);
   if (task) {
     await task.destroy();
     res.status(204).end();
+    // console.log('attempt?')
+    res.redirect('/home')
   } else {
     next(taskValidators(id));
+    console.log(req.params)
   }
 }))
 

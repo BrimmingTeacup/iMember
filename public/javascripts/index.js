@@ -33,7 +33,4 @@ window.addEventListener("load", (event)=>{
     document.querySelectorAll('.logout-button')[0].setAttribute('hidden', 'true')
     //make dynamic
 
-
-
-
 })

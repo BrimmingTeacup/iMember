@@ -34,6 +34,7 @@ block content
           th(scope='col' class="table-col-name") Priority
           th(scope='col' class="table-col-name") Repeat
           th(scope='col' class="table-col-name") Location
+          th(scope='col' class="table-col-name") Complete
       tbody(class="table-body")
         each newTask in tasks
           tr
@@ -44,6 +45,9 @@ block content
             td(class="table-data")= newTask.priority
             td(class="table-data")= newTask.repeat
             td(class="table-data")= newTask.location
+            td(class="table-data")
+              a(href=`http://localhost:8080/tasks/delete/${newTask.id}` method="delete")
+                button(type="delete") Done!
           //- td: a(class='btn btn-primary' href=`/park/${list.id}` role='button') Details
 
         //- each newList in lists
