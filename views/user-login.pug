@@ -3,7 +3,6 @@ extends layout.pug
 include utils.pug
 
 append head
-  link(rel='stylesheet' href='/stylesheets/reset.css')
   link(rel="stylesheet" href="/stylesheets/forms.css")
   link(rel="stylesheet" href="/stylesheets/background-left.css")
 
@@ -18,4 +17,5 @@ block content
         div(class='submit-button')
         button(type='submit') Login
         a(href='/users/register') Don't have an account?
-        a(href='/') Cancel
+        a(href='/')
+          button() Cancel

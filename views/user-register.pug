@@ -3,7 +3,6 @@ extends layout
 include utils.pug
 
 append head
-  link(rel='stylesheet' href='/stylesheets/reset.css')
   link(rel="stylesheet" href="/stylesheets/forms.css")
   link(rel="stylesheet" href="/stylesheets/background-right.css")
 
@@ -19,4 +18,5 @@ block content
         +field('Confirm Password', 'confirmPassword', '', 'password')
         button(type="submit") Submit
         a(href='/users/login') Already have an account?
-        a(href='/') Cancel
+        a(href='/')
+          button() Cancel
